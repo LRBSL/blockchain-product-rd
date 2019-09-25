@@ -1,0 +1,11 @@
+# gitignore for main linux project at the '/home/blockchain' location
+
+.*/
+.bash_history
+.bash_logout
+.bashrc
+.cloud-locale-test.skip
+.profile
+.wget-hsts
+
+/hyperledger-fabric-network

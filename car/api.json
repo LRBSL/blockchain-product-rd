@@ -1,0 +1,12 @@
+[
+  {
+      "function": "create",
+      "verb": "post",
+      "controller": "CarController"
+  },
+  {
+      "function": "get",
+      "verb": "get",
+      "controller": "CarController"
+  }
+]
