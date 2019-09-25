@@ -7,5 +7,6 @@
 .cloud-locale-test.skip
 .profile
 .wget-hsts
+.gitconfig
 
 /hyperledger-fabric-network
