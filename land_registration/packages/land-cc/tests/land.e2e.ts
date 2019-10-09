@@ -50,7 +50,7 @@ describe('Land', () => {
       Boundaries: [[1,3], [2,1], [1,4], [12,2]]
     });
 
-    await landCtrl.create(modelSample);
+    await landCtrl.createLand(modelSample);
 
     const justSavedModel = await Land.getOne(modelSample.id);
     expect(justSavedModel.id).to.exist;

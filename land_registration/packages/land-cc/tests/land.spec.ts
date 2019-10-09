@@ -38,7 +38,7 @@ describe('Land', () => {
       Boundaries: [[1,3], [2,1], [1,4], [12,2]]
     });
 
-    await landCtrl.$withUser('Test').create(modelSample);
+    await landCtrl.$withUser('Test').createLand(modelSample);
   
     const justSavedModel = await adapter.getById<Land>(modelSample.id);
   
