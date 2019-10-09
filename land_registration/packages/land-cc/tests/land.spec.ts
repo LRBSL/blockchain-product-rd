@@ -6,21 +6,21 @@ import { MockControllerAdapter } from '@worldsibu/convector-adapter-mock';
 import { ClientFactory, ConvectorControllerClient } from '@worldsibu/convector-core';
 import 'mocha';
 
-import { Car, CarController } from '../src';
+import { Land, LandController } from '../src';
 
-describe('Car', () => {
+describe('Land', () => {
   let adapter: MockControllerAdapter;
-  let carCtrl: ConvectorControllerClient<CarController>;
+  let landCtrl: ConvectorControllerClient<LandController>;
   
   before(async () => {
     // Mocks the blockchain execution environment
     adapter = new MockControllerAdapter();
-    carCtrl = ClientFactory(CarController, adapter);
+    landCtrl = ClientFactory(LandController, adapter);
 
     await adapter.init([
       {
         version: '*',
-        controller: 'CarController',
+        controller: 'LandController',
         name: join(__dirname, '..')
       }
     ]);
@@ -29,16 +29,16 @@ describe('Car', () => {
   });
   
   it('should create a default model', async () => {
-    const modelSample = new Car({
+    const modelSample = new Land({
       id: uuid(),
       name: 'Test',
       created: Date.now(),
       modified: Date.now()
     });
 
-    await carCtrl.$withUser('Test').create(modelSample);
+    await landCtrl.$withUser('Test').create(modelSample);
   
-    const justSavedModel = await adapter.getById<Car>(modelSample.id);
+    const justSavedModel = await adapter.getById<Land>(modelSample.id);
   
     expect(justSavedModel.id).to.exist;
   });

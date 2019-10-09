@@ -1,4 +1,4 @@
-# car - car
+# land_registration - land
 
 This awesome project was created automatically with <a href="https://github.com/worldsibu/convector-cli" target="_blank">Convector CLI</a>.
 By default new Convector projects locally include <a href="https://github.com/worldsibu/hurley">Hurley</a> to manage your development environment seamlessly, so you don't have to worry about setting up the network and hard ways to install  and upgrade your chaincodes.
@@ -11,10 +11,10 @@ npm i
 # Create a new development blockchain network  - From the root of your project
 npm run env:restart
 # Install your smart contract
-npm run cc:start -- car
+npm run cc:start -- land
 # Make a testing call to create a record in the ledger
 # Beware that the first call may fail with a timeout! Just happens the first time
-hurl invoke car car_create "{\"name\":\"my first request\",\"id\":\"0001\",\"created\":0,\"modified\":0}"
+hurl invoke land land_create "{\"name\":\"my first request\",\"id\":\"0001\",\"created\":0,\"modified\":0}"
 ```
 
 ## About Hurley
@@ -58,14 +58,14 @@ hurl new
 
 ```
 # Package your smart contract's code  - From the root of your project
-npm run cc:package -- car org1
+npm run cc:package -- land org1
 # Install to your blockchain - From the root of your project
-hurl install car node -P ./chaincode-car
+hurl install land node -P ./chaincode-land
 # Install in debug mode, this will run the chaincode server locally so you can debug
-hurl install car node -P ./chaincode-car --debug
+hurl install land node -P ./chaincode-land --debug
 
 # Upgrade your existing chaincode - From the root of your project
-hurl upgrade car node 1.2 -P ./chaincode-car
+hurl upgrade land node 1.2 -P ./chaincode-land
 ```
 
 ## Start - if you don't have Hurley globally
@@ -83,10 +83,10 @@ npm run env:restart
 
 ```
 # Install to your blockchain - From the root of your project
-npm run cc:start -- car
+npm run cc:start -- land
 
 # Upgrade your existing chaincode - From the root of your project
-npm run cc:upgrade -- car 1.2
+npm run cc:upgrade -- land 1.2
 ```
 
 ## Tests

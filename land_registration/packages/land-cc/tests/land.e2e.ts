@@ -7,11 +7,11 @@ import { CouchDBStorage } from '@worldsibu/convector-storage-couchdb';
 import { FabricControllerAdapter } from '@worldsibu/convector-platform-fabric';
 import { BaseStorage, ClientFactory, ConvectorControllerClient } from '@worldsibu/convector-core';
 
-import { Car, CarController } from '../src';
+import { Land, LandController } from '../src';
 
-describe('Car', () => {
+describe('Land', () => {
   let adapter: FabricControllerAdapter;
-  let carCtrl: ConvectorControllerClient<CarController>;
+  let landCtrl: ConvectorControllerClient<LandController>;
 
   before(async () => {
       adapter = new FabricControllerAdapter({
@@ -19,20 +19,20 @@ describe('Car', () => {
         txTimeout: 300000,
         user: 'user1',
         channel: 'ch1',
-        chaincode: 'car',
+        chaincode: 'land',
         keyStore: '$HOME/hyperledger-fabric-network/.hfc-org1',
         networkProfile: '$HOME/hyperledger-fabric-network/network-profiles/org1.network-profile.yaml',
         userMspPath: '$HOME/hyperledger-fabric-network/artifacts/crypto-config/peerOrganizations/org1.hurley.lab/users/User1@org1.hurley.lab/msp',
         userMsp: 'org1MSP'
       });
-      carCtrl = ClientFactory(CarController, adapter);
+      landCtrl = ClientFactory(LandController, adapter);
       await adapter.init(true);
 
       BaseStorage.current = new CouchDBStorage({
         host: 'localhost',
         protocol: 'http',
         port: '5084'
-      }, 'ch1_car');
+      }, 'ch1_land');
   });
 
   after(() => {
@@ -41,16 +41,16 @@ describe('Car', () => {
   });
 
   it('should create a default model', async () => {
-    const modelSample = new Car({
+    const modelSample = new Land({
       id: uuid(),
       name: 'Test',
       created: Date.now(),
       modified: Date.now()
     });
 
-    await carCtrl.create(modelSample);
+    await landCtrl.create(modelSample);
 
-    const justSavedModel = await Car.getOne(modelSample.id);
+    const justSavedModel = await Land.getOne(modelSample.id);
     expect(justSavedModel.id).to.exist;
   });
 });

@@ -7,10 +7,10 @@ import {
   Validate
 } from '@worldsibu/convector-core-model';
 
-export class Car extends ConvectorModel<Car> {
+export class Land extends ConvectorModel<Land> {
   @ReadOnly()
   @Required()
-  public readonly type = 'io.worldsibu.car';
+  public readonly type = 'io.worldsibu.land';
 
   @Required()
   @Validate(yup.string())

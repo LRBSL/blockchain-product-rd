@@ -67,5 +67,3 @@ dist
 
 # Generated chaincode packages
 chaincode-*
-
-package-lock.json

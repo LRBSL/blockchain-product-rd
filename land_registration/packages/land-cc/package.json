@@ -1,7 +1,7 @@
 {
-  "name": "car-cc",
+  "name": "land-cc",
   "version": "0.1.0",
-  "description": "Chaincodes package for car",
+  "description": "Chaincodes package for land",
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
   "files": [
