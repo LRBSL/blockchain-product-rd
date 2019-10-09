@@ -35,7 +35,7 @@ describe('Land', () => {
       Extent: 50,
       ParentLandID: "Nil",
       Owner: "Tomoko",
-      Boundaries: 10
+      Boundaries: [[1,3], [2,1], [1,4], [12,2]]
     });
 
     await landCtrl.$withUser('Test').create(modelSample);
