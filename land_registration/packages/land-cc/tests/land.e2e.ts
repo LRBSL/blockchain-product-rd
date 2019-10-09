@@ -43,9 +43,11 @@ describe('Land', () => {
   it('should create a default model', async () => {
     const modelSample = new Land({
       id: uuid(),
-      name: 'Test',
-      created: Date.now(),
-      modified: Date.now()
+      RLRegistry: 'Colombo',
+      Extent: 50,
+      ParentLandID: "Nil",
+      Owner: "Tomoko",
+      Boundaries: 10
     });
 
     await landCtrl.create(modelSample);

@@ -14,14 +14,21 @@ export class Land extends ConvectorModel<Land> {
 
   @Required()
   @Validate(yup.string())
-  public name: string;
-
-  @ReadOnly()
-  @Required()
-  @Validate(yup.number())
-  public created: number;
+  public RLRegistry: string;
 
   @Required()
   @Validate(yup.number())
-  public modified: number;
+  public Extent: number;
+
+  @Required()
+  @Validate(yup.string())
+  public ParentLandID: string;
+
+  @Required()
+  @Validate(yup.string())
+  public Owner: string;
+
+  @Required()
+  @Validate(yup.number())
+  public Boundaries: number;
 }
