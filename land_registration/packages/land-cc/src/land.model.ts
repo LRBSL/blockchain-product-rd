@@ -28,7 +28,22 @@ export class Land extends ConvectorModel<Land> {
   @Validate(yup.string())
   public Owner: string;
 
+  @Validate(yup.string())
+  public NewOwner: string;
+
   @Required()
   @Validate(yup.array().of(yup.array().of(yup.number())))
   public Boundaries: number[][];
+
+  @Required()
+  @Validate(yup.number())
+  public SurveyorVote: number;
+
+  @Required()
+  @Validate(yup.number())
+  public NotaryVote: number;
+
+  @Required()
+  @Validate(yup.number())
+  public CurrentOwnerVote: number;
 }

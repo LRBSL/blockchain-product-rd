@@ -27,5 +27,20 @@
     "function": "getHistoryForLand",
     "verb": "get",
     "controller": "LandController"
+  },
+  {
+    "function": "changeSurveyorVote",
+    "verb": "post",
+    "controller": "LandController"
+  },
+  {
+    "function": "changeNotaryVote",
+    "verb": "post",
+    "controller": "LandController"
+  },
+  {
+    "function": "changeCurrentOwnerVote",
+    "verb": "post",
+    "controller": "LandController"
   }
 ]

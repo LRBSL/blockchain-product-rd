@@ -68,3 +68,36 @@ export async function LandController_getHistoryForLand_get(req: Request, res: Re
         res.status(500).send(ex);
     }
 }
+export async function LandController_changeSurveyorVote_post(req: Request, res: Response): Promise<void>{
+    try{
+        let params = req.body;
+            res.status(200).send(await LandControllerBackEnd
+                .changeSurveyorVote(params.id,params.vote));
+            
+    } catch(ex) {
+        console.log('Error post LandController_changeSurveyorVote', ex.stack);
+        res.status(500).send(ex);
+    }
+}
+export async function LandController_changeNotaryVote_post(req: Request, res: Response): Promise<void>{
+    try{
+        let params = req.body;
+            res.status(200).send(await LandControllerBackEnd
+                .changeNotaryVote(params.id,params.vote,params.newOwner));
+            
+    } catch(ex) {
+        console.log('Error post LandController_changeNotaryVote', ex.stack);
+        res.status(500).send(ex);
+    }
+}
+export async function LandController_changeCurrentOwnerVote_post(req: Request, res: Response): Promise<void>{
+    try{
+        let params = req.body;
+            res.status(200).send(await LandControllerBackEnd
+                .changeCurrentOwnerVote(params.id,params.vote));
+            
+    } catch(ex) {
+        console.log('Error post LandController_changeCurrentOwnerVote', ex.stack);
+        res.status(500).send(ex);
+    }
+}
