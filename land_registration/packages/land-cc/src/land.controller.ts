@@ -18,33 +18,73 @@ export class LandController extends ConvectorController<ChaincodeTx> {
     // Mock Data
     let mockData = [
       new Land(
-        { 
-          id: "LAND_001", 
-          RLRegistry: "Colombo", 
-          Extent: 50, 
-          ParentLandID: "nil", 
+        {
+          id: "LAND_001",
+          RLRegistry: "Colombo",
+          Extent: 50,
+          ParentLandID: "nil",
           Owner: "Ravindu Sachintha",
           NewOwner: 'nil',
           Boundaries: [[0, 20], [10, 20], [10, 0], [0, 0]],
           SurveyorVote: 1,
           NotaryVote: 0,
-          CurrentOwnerVote: 0 
+          CurrentOwnerVote: 0
         }),
       new Land(
-        { 
-          id: "LAND_002", 
-          RLRegistry: "Delkanda", 
-          Extent: 25, 
-          ParentLandID: "nil", 
-          Owner: "Brad", 
+        {
+          id: "LAND_002",
+          RLRegistry: "Delkanda",
+          Extent: 25,
+          ParentLandID: "nil",
+          Owner: "Namal Jayasinghe",
           NewOwner: 'nil',
           Boundaries: [[0, 20], [10, 20], [10, 0], [0, 0]],
           SurveyorVote: 1,
           NotaryVote: 0,
           CurrentOwnerVote: 0
-        })
+        }),
+      new Land(
+        {
+          id: "LAND_003",
+          RLRegistry: "Aissawella",
+          Extent: 32,
+          ParentLandID: "nil",
+          Owner: "Sashika Madubhashini",
+          NewOwner: 'nil',
+          Boundaries: [[30, 20], [10, 80], [10, 0], [0, 0]],
+          SurveyorVote: 1,
+          NotaryVote: 0,
+          CurrentOwnerVote: 0
+        }),
+      new Land(
+        {
+          id: "LAND_004",
+          RLRegistry: "Rajagiriya",
+          Extent: 75,
+          ParentLandID: "nil",
+          Owner: "Tharindu Madhusanka",
+          NewOwner: 'nil',
+          Boundaries: [[0, 34], [12, 20], [10, 45], [0, 18]],
+          SurveyorVote: 1,
+          NotaryVote: 0,
+          CurrentOwnerVote: 0
+        }),
+      new Land(
+        {
+          id: "LAND_005",
+          RLRegistry: "Kadawatha",
+          Extent: 40,
+          ParentLandID: "nil",
+          Owner: "Rupika Jayaweera",
+          NewOwner: 'nil',
+          Boundaries: [[0, 20], [15, 25], [25, 0], [0, 0]],
+          SurveyorVote: 1,
+          NotaryVote: 0,
+          CurrentOwnerVote: 0
+        }),
     ];
     await Promise.all(mockData.map(land => land.save()));
+    return "successfully initialized";
   }
 
   @Invokable()
@@ -60,15 +100,19 @@ export class LandController extends ConvectorController<ChaincodeTx> {
   @Invokable()
   public async createLand(@Param(Land) land: Land) {
     await land.save();
+    return "successfully land created";
   }
 
   @Invokable()
-  public async changeLandOwner(@Param(yup.string()) id: string, @Param(yup.string()) owner: string) {
+  public async changeLandOwner(@Param(yup.string()) id: string) {
     let land = await Land.getOne(id);
-    if(land.SurveyorVote != 1 && land.NotaryVote != 1 && land.CurrentOwnerVote != 1) {
+    if (land.SurveyorVote != 1 && land.NotaryVote != 1 && land.CurrentOwnerVote != 1) {
       return "Transaction not permitted yet.";
     }
-    land.Owner = owner;
+    land.Owner = land.NewOwner;
+    land.NewOwner = 'nil';
+    land.NotaryVote = 0;
+    land.CurrentOwnerVote = 0;
     return land.save();
   }
 

@@ -50,7 +50,7 @@ export async function LandController_changeLandOwner_post(req: Request, res: Res
     try{
         let params = req.body;
             res.status(200).send(await LandControllerBackEnd
-                .changeLandOwner(params.id,params.owner));
+                .changeLandOwner(params.id));
             
     } catch(ex) {
         console.log('Error post LandController_changeLandOwner', ex.stack);
